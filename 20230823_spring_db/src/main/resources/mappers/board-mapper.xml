@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper	namespace="board">
+	<select id="selectList" resultType="Board">
+		select * from board
+	</select>
+	<select id="selectOne" resultType="Board" parameterType="_int">
+		select * from board where bno=#{bno}
+	</select>
+	<insert id="insert" parameterType="Board">
+		insert into board (bno, btitle, bcontent, bwrite_date, mid, bref, bre_level, bre_step) 
+		 values (seq_board_bno.nextval, #{btitle}, #{bcontent}, default, #{mid}, seq_board_bno.nextval, 0, 0)
+	</insert>
+</mapper>
